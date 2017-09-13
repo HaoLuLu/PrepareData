@@ -1,0 +1,108 @@
+﻿@using Abp.Web.Mvc.Extensions
+@using PrepareData.SinglePages.Dto
+@model SinglePageDto
+@{
+    ViewBag.ActiveMenu = "SinglePages";
+}
+@section Styles{
+    @Html.IncludeStyle("~/Scripts/jstree/themes/default/style.min.css")
+    @Html.IncludeStyle("~/Content/css/webuploader.mini.css")
+    @Html.IncludeStyle("~/Content/css/font-awesome.css")
+    @Html.IncludeStyle("~/Content/css/Style.css")
+}
+@section scripts{
+    @Html.IncludeScript("~/Scripts/ueditor/ueditor.config.js")
+    @Html.IncludeScript("~/Scripts/ueditor/ueditor.all.js")
+    @Html.IncludeScript("~/Views/SinglePages/SinglePageDetail.js")
+    @Html.IncludeScript("~/Scripts/webuploader/webuploader.js")
+    @Html.IncludeScript("~/Scripts/jstree/jstree.min.js")
+    @Html.IncludeScript("~/Scripts/jedate/jedate.js")
+    <script type="text/javascript">
+        jeDate({
+            dateCell: "#PublishTime",
+            format: "YYYY-MM-DD hh:mm:ss",
+            isinitVal: false,
+            isTime: true, //isClear: true,
+            
+            minDate: "2014-09-19 00:00:00",
+            okfun: function (val) { alert(val) }
+        });
+
+    </script>
+}
+<div id="modalEdit" class="col s12">
+    <h5 style="text-align:center;">@L("Create")@L("SinglePage")</h5>
+    <div class="card-panel">
+        <form name="SinglePageCreateForm" role="form" class="form-validation">
+            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+            <div class="row">
+                <div class="col s12 l6">
+                    <div class="input-field col s12 l12">
+                        <label for="Title"><span style="color:red;">*</span>@L("Title") </label>
+                        <input id="Title" name="Title" type="text" value="@Model.Title">
+                    </div>
+                    <div class="col s12 l12">
+                        <label for="Introduce">@L("Introduce")</label>
+                        <textarea id="Introduce" class="materialize-textarea" name="Introduce" type="text" length="120">@Model.Introduce</textarea>
+                    </div>
+                </div>
+                <div class="col s12 l6">
+                    <div class="col s6 l4">
+                        <label>选择导航栏目</label>
+                        <input id="NavigationMenuId" name="NavigationMenuId" type="hidden" value="@Model.NavigationMenuId">
+                        <div class="" style="overflow-y: auto; max-height: 220px;">
+                            <div id="tree" style="min-height:220px;"></div> 
+                        </div>
+                    </div>
+                    <div class="col s12 l8">
+                        @if (!string.IsNullOrEmpty(Model.Picture))
+                        {
+                            <div id="fileList2" class="cp_img">
+                                <img src="@Model.Picture">
+                                <div class="del"></div>
+                            </div>
+                        }
+                        <div id="fileList">
+                        </div>
+                        <div class="cp_img_jia" id="filePicker" style="display:@(string.IsNullOrEmpty(Model.Picture) ? "block" : "none")"></div>
+                        <div width="104"></div>
+                        <div>
+                            @*<button id="ctlBtn" class="btn btn-default">开始上传</button>*@
+                        </div>
+                        <input type="hidden" id="Picture" name="Picture" value="@(Model==null?null:Model.Picture)" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 l12">
+                    <label for="Content">@L("Content")</label>
+                    <!-- 加载编辑器的容器 -->
+                    <script id="Content" name="Content" type="text/plain">
+                        @MvcHtmlString.Create(Model.Content)
+                    </script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 l4 switch">
+                    @L("IsPublish")
+                    <label>
+                        <span style="color:red">否</span>
+                        <input type="checkbox" id="IsPublish" name="IsPublish" @(Model.IsPublish == "1" ? "checked" : "")>
+                        <span class="lever"></span>
+                        <span style="color:black">是</span>
+                    </label>
+                </div>
+                <div class="input-field col s12 l4">
+                    <label for="PublishTime">@L("PublishTime")</label>
+                    <input id="PublishTime" class="datainp" name="PublishTime" type="text" value="@(Model.PublishTime == null ? "" : Model.PublishTime.ToString("yyyy-MM-dd HH:mm:ss"))">
+                </div>
+                <div class="input-field col s12">
+
+                    <button id="ctlBtn" type="submit" class="btn modal-action waves-effect waves-green margin-right-5"><i class="fa fa-save"></i> @L("Submit")</button>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

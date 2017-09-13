@@ -1,0 +1,15 @@
+﻿@model PrepareData.Web.Models.Layout.LanguageSelectionViewModel
+<li>
+    <a class="dropdown-button" href="#!" data-activates="dropdownTopMenuLanguages">
+        <i class="@Model.CurrentLanguage.Icon"></i>@Model.CurrentLanguage.DisplayName<i class="fa fa-caret-down"></i>
+    </a>
+    <ul id="dropdownTopMenuLanguages" class="dropdown-content">
+        @foreach (var language in Model.Languages)
+        {
+            if (language.Name != Model.CurrentLanguage.Name)
+            {
+                <li><a href="@(ApplicationPath)AbpLocalization/ChangeCulture?cultureName=@(language.Name)&returnUrl=@(Request.Url)"><i class="@language.Icon"></i> @language.DisplayName</a></li>
+            }
+        }
+    </ul>
+</li>

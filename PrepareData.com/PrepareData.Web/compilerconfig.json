@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Content/css/main.css",
+    "inputFile": "Content/css/main.less"
+  },
+  {
+    "outputFile": "Views/IndexDisplay/index.css",
+    "inputFile": "Views/IndexDisplay/index.less"
+  }
+]

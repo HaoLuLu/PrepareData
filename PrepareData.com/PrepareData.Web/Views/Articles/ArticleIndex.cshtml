@@ -1,0 +1,49 @@
+﻿@using Abp.MultiTenancy
+@using Abp.Web.Mvc.Extensions
+@using PrepareData.MultiTenancy
+@{
+    ViewBag.ActiveMenu = "Articles"; //The menu item will be active for this page.
+}
+@section styles
+{
+    @Html.IncludeStyle("~/Content/css/jquery.dataTables.min.css")
+}
+@section scripts
+{
+    @Html.IncludeScript("~/Scripts/jquery.form.min.js")
+    @Html.IncludeScript("~/Scripts/DataTables/jquery.dataTables.min.js")
+    @Html.IncludeScript("~/Views/Articles/ArticleIndex.js")
+
+}
+<div class="card-panel">
+    <p></p>
+    <div class="row">
+        <div class="col s12">
+            <form class="col s12 query_form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="Title" type="text" class="validate">
+                        <label for="icon_prefix3" class="">@L("Title")</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button class="btn cyan waves-effect waves-light left query_btn" type="button" name="action">
+                            <i class="mdi-action-search"></i> @L("Query")
+                        </button>
+                        <a id="add_doc" class="btn waves-effect waves-light right edit_btn" href="@(ApplicationPath+"Articles/ArticleDetail")">
+                            <i class="fa fa-plus"></i> @L("Create")
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <table id="datatable" class="responsive-table centered striped highlight">
+                <thead>
+                    <tr>
+                        <th>@L("Title")</th>
+                        <th>@L("NavigationMenu")</th>
+                        <th>@L("Operation")</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>

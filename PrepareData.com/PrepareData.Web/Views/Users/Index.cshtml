@@ -1,0 +1,92 @@
+﻿@using Abp.Web.Mvc.Extensions
+@{
+    ViewBag.ActiveMenu = "Users"; //The menu item will be active for this page.
+}
+@section styles
+{
+    @Html.IncludeStyle("~/Content/css/jquery.dataTables.min.css")
+}
+@section scripts
+{
+    @Html.IncludeScript("~/Scripts/DataTables/jquery.dataTables.min.js")
+    @Html.IncludeScript("~/Views/Users/Index.js")
+}
+<div class="card-panel">
+    <p></p>
+    <div class="row">
+        <div class="col s12">
+            <form class="col s12 query_form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="Name" type="text" class="validate">
+                        <label for="icon_prefix3" class="">@L("Name")</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button class="btn cyan waves-effect waves-light left query_btn" type="button" name="action">
+                            <i class="mdi-action-search"></i> @L("Query")
+                        </button>
+                        <a id="add_doc" class="btn waves-effect waves-light right edit_btn" href="#modalEdit">
+                            <i class="fa fa-plus"></i> @L("Create")
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <table id="datatable" class="responsive-table centered striped highlight">
+                <thead>
+                    <tr>
+                        <th>@L("UserName")</th>
+                        <th>@L("FullName")</th>
+                        <th>@L("EmailAddress")</th>
+                        <th>@L("LastLoginTime")</th>
+                        <th>@L("CreationTime")</th>
+                        <th>@L("IsActive")</th>
+                        <th>@L("Operation")</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+    <div class="modal-content">
+        <form name="tenantCreateForm" role="form" class="form-validation">
+            <h4><span>@L("Edit")</span></h4>
+            <div class="row">
+                <input type="hidden" id="Id" name="Id" value="0" />
+                <div class="input-field col s12 l6">
+                    <label>@L("UserName")</label>
+                    <input type="text" id="UserName" name="UserName" required>
+                </div>
+                <div class="input-field col s12 l6">
+                    <label>@L("Password")</label>
+                    <input type="password" id="Password" name="Password">
+                </div>
+                <div class="input-field col s12 l6">
+                    <label>@L("Surname")</label>
+                    <input type="text" name="Surname" id="Surname" required>
+                </div>
+                <div class="input-field col s12 l6">
+                    <label>名</label>
+                    <input type="text" id="Name" name="Name" required>
+                </div>
+                <div class="input-field col s12 l6">
+                    <label>@L("EmailAddress")</label>
+                    <input type="email" name="EmailAddress" id="EmailAddress" required>
+                </div>
+                <div class="col s12 l6 switch">
+                    <label>
+                        停用
+                        <input type="checkbox" id="IsActive" name="IsActive" checked>
+                        <span class="lever"></span>
+                        启用
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn modal-action waves-effect waves-green margin-right-5"><i class="fa fa-save"></i> @L("Submit")</button>
+                    <button type="button" class="btn grey modal-close waves-effect waves-green margin-right-5"><i class="fa fa-reply"></i> @L("Cancel")</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

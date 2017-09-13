@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Web.cshtml";
+}
+@model PrepareData.SinglePages.Dto.SinglePageDto
+@section styles{
+
+}
+@section scripts{
+    <script>
+        $(function () {
+            $('.carousel.carousel-slider').carousel({ full_width: true });
+            load_Menu(@Model.NavigationMenuId);
+            $(".html-content img").addClass("responsive-img materialboxed");
+        });
+    </script>
+}
+
+<div class="col s12 l12">
+    <div class="card hoverable">
+        <div class="card-action">
+            <div class="card-title center">@Model.Title</div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-content html-content">
+            <p class="p-indent">
+                @MvcHtmlString.Create(Model.Content)
+            </p>
+        </div>
+    </div>
+</div>

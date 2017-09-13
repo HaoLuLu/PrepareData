@@ -1,0 +1,95 @@
+﻿main,
+footer {
+  padding-left: 240px;
+}
+@media only screen and (max-width: 992px) {
+  main,
+  footer {
+    padding-left: 0;
+  }
+}
+.bold > a {
+  font-weight: bold;
+}
+.margin-right-5 {
+  margin-right: 5px !important;
+}
+nav .brand-logo {
+  margin: 0 20px;
+}
+nav .nav-wrapper i {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+nav .dropdown-button .famfamfam-flag-cn {
+  width: 16px;
+  height: 11px;
+  margin: 0 5px;
+}
+nav .dropdown-content li > a > i {
+  height: 11px;
+}
+.side-nav {
+  width: 240px;
+}
+.side-nav.fixed {
+  top: 64px;
+}
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active {
+  background-color: #ee6e73;
+}
+.side-nav .collapsible li.bold,
+.side-nav.fixed .collapsible li.bold {
+  border-bottom: 1px solid #d0d0d0;
+}
+.side-nav li > a > i {
+  font-size: 1.4rem;
+  margin: 0 10px 0 32px;
+  text-align: center;
+}
+.text-danger {
+  font-size: 12px;
+  color: #f44336;
+  margin-top: -15px;
+}
+.tabs .tab {
+  position: relative;
+}
+.tabs .tab button {
+  position: absolute;
+  top: 12px;
+  height: 25px;
+  width: 25px;
+  line-height: 25px;
+  background-color: transparent !important;
+}
+.tabs .tab button:hover {
+  background-color: #bdbdbd !important;
+}
+.tabs .tab button i {
+  font-size: 1.0rem;
+  line-height: 25px;
+}
+.tabs .tab button.close {
+  right: 5px;
+}
+.tabs .tab button.close i {
+  color: red;
+}
+.tabs .tab button.refresh {
+  right: 32px;
+}
+.tabs .tab button.refresh i {
+  color: green;
+}
+.tabs .tab a {
+  background-color: #e0e0e0;
+}
+.tabs .tab a.active {
+  background-color: #fff;
+}
+.switch {
+  padding-top: 25px;
+}

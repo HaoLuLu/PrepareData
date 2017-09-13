@@ -1,0 +1,193 @@
+﻿@using Abp.Web.Mvc.Extensions
+@using PrepareData.ChildSysConfigs
+@using PrepareData.TenantGroups.Dtos
+@model List<ChildSysConfig>
+@{
+    ViewBag.ActiveMenu = "ChildSysConfigs"; //The menu item will be active for this page.
+    var sigeList = ViewBag.SigeList as List<SelectOutput>;
+    var articleList = ViewBag.ArticleList as List<SelectOutput>;
+}
+@section Styles{
+
+    @Html.IncludeStyle("~/Content/css/webuploader.mini.css")
+    @Html.IncludeStyle("~/Content/css/font-awesome.css")
+    @Html.IncludeStyle("~/Content/css/Style.css")
+}
+@section scripts
+{
+    @Html.IncludeScript("~/Views/ChildSysConfigs/Index.js")
+    @Html.IncludeScript("~/Scripts/webuploader/webuploader.js")
+}
+
+@foreach (var item in Model)
+{
+    <div class="card-panel grey lighten-2">
+        <div class="row">
+            <form id="form_@(item.Name)">
+                <input type="hidden" name="Id" value="@item.Id" />
+                <input type="hidden" name="Type" value="@item.Type" />
+                @switch (item.Type)
+                {
+                    case EnumConfigType.Text:
+                        <div class="input-field col s6 l1"><h4 class="flow-text">@item.DisplayName:</h4></div>
+                        <div class="input-field col s6 l4">
+                            <input class="text-config" type="text" name="Text" value="@item.Text" placeholder="@item.DisplayName">
+                        </div>
+                        break;
+                    case EnumConfigType.Img:
+                        <div class="input-field col s6 l1"><h4 class="flow-text">@item.DisplayName:</h4></div>
+                        <div class="input-field col s6 l4">
+                            <div class="file-list">
+                                @if (!string.IsNullOrEmpty(item.Text))
+                                {
+                                    <div id="@item.Id" class="cp_img">
+                                        <img class="materialboxed" src="@item.Text">
+                                        <div class="del"></div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="cp_img_jia file-picker"></div>
+                            <input type="hidden" name="Text" value="@item.Text" />
+                        </div>
+                        <div class="input-field col s12 l3">
+                            <label class="active">@L("Url")</label>
+                            <input class="text-config" type="text" name="Url" value="@item.Url">
+                        </div>
+                        break;
+                    case EnumConfigType.Multiline:
+                        <div class="input-field col s6 l1"><h4 class="flow-text">@item.DisplayName:</h4></div>
+                        <div class="input-field col s6 l4">
+                            <textarea class="materialize-textarea text-config" length="120" name="Text" placeholder="@item.DisplayName">@item.Text</textarea>
+                        </div>
+                        break;
+                    case EnumConfigType.Textarea:
+                        <div class="input-field col s6 l1"><h4 class="flow-text">@item.DisplayName:</h4></div>
+                        <div class="input-field col s6 l4">
+                            <textarea class="materialize-textarea text-config" length="120" name="Text" placeholder="@item.DisplayName">@item.Text</textarea>
+                        </div>
+                        break;
+                    case EnumConfigType.Radio:
+                        <div class="input-field col s6 l1"><h4 class="flow-text">@item.DisplayName:</h4></div>
+                        <div class="input-field col s6 l4">
+                            @switch (item.Name)
+                            {
+                                case "sige":
+                                    foreach (var sige in sigeList)
+                                    {
+                                        <div class="col s12 l4">
+                                            <input name="Value" type="radio" id="sige@(sige.Id)" class="with-gap radio-config" value="@sige.Id" @(sige.Id == item.Value ? "checked" : "") />
+                                            <label for="sige@(sige.Id)">@sige.Text</label>
+                                        </div>
+                                    }
+                                    break;
+
+                                case "template":
+                                    <div class="col">
+                                        <input name="Value" type="radio" id="template1" class="with-gap radio-config" value="1" @(item.Value == 1 ? "checked" : "") />
+                                        <label for="template1">模板1</label>
+                                    </div>
+                                    <div class="col">
+                                        <input disabled="disabled" name="Value" type="radio" id="template2" class="with-gap radio-config" value="2" @(item.Value == 2 ? "checked" : "") />
+                                        <label for="template2">模板2</label>
+                                    </div>
+                                    <div class="col">
+                                        <input name="Value" type="radio" id="template3" class="with-gap radio-config" value="3" @(item.Value == 3 ? "checked" : "") />
+                                        <label for="template3">模板3</label>
+                                    </div>
+                                    <div class="col">
+                                        <input disabled="disabled" name="Value" type="radio" id="template4" class="with-gap radio-config" value="4" @(item.Value == 4 ? "checked" : "") />
+                                        <label for="template4">模板4</label>
+                                    </div>
+                                    <div class="col">
+                                        <input name="Value" type="radio" id="template5" class="with-gap radio-config" value="5" @(item.Value == 5 ? "checked" : "") />
+                                        <label for="template5">模板5</label>
+                                    </div>
+                                    <div class="col">
+                                        <input name="Value" type="radio" id="template6" class="with-gap radio-config" value="6" @(item.Value == 6 ? "checked" : "") />
+                                        <label for="template6">模板6</label>
+                                    </div>
+                                    <div class="col">
+                                        <input name="Value" type="radio" id="template7" class="with-gap radio-config" value="7" @(item.Value == 7 ? "checked" : "") />
+                                        <label for="template7">模板7</label>
+                                    </div>
+                                    <div class="col">
+                                        <input disabled="disabled" name="Value" type="radio" id="template8" class="with-gap radio-config" value="8" @(item.Value == 8 ? "checked" : "") />
+                                        <label for="template8">模板8</label>
+                                    </div>
+                                    <div class="col">
+                                        <input disabled="disabled" name="Value" type="radio" id="template9" class="with-gap radio-config" value="9" @(item.Value == 9 ? "checked" : "") />
+                                        <label for="template9">模板9</label>
+                                    </div>
+                                    <div class="col">
+                                        <input disabled="disabled" name="Value" type="radio" id="template10" class="with-gap radio-config" value="10" @(item.Value == 10 ? "checked" : "") />
+                                        <label for="template10">模板10</label>
+                                    </div>
+                                    break;
+                                default:
+                                    <div class="col s12 l4">
+                                        <input disabled="disabled" name="Value" type="radio" id="test1" class="with-gap radio-config" value="1" />
+                                        <label for="test1">主题1</label>
+                                    </div>
+                                    <div class="col s12 l4">
+                                        <input disabled="disabled" name="Value" type="radio" id="test2" class="with-gap radio-config" value="2" />
+                                        <label for="test2">主题2</label>
+                                    </div>
+                                    <div class="col s12 l4">
+                                        <input disabled="disabled" name="Value" type="radio" id="test3" class="with-gap radio-config" value="3" />
+                                        <label for="test3">主题3</label>
+                                    </div>
+                                    break;
+                            }
+                        </div>
+                        break;
+                    case EnumConfigType.Checkbox:
+                        <div class="input-field col s6 l1">
+                            <h4 class="flow-text">@item.DisplayName:</h4>
+                        <p class="red-text">首页显示顺序按照选择的先后顺序排列！！</p>
+                        </div>
+                        <div class="input-field col s6 l4">
+                            @switch (item.Name)
+                            {
+                                case "article":
+                                    foreach (var article in articleList)
+                                    {
+                                        <div class="col s12 l4">
+                                            <input name="Checks" type="checkbox" id="article@(article.Id)" class="checkbox-config" value="@article.Id" @((item.Text ?? "").Split(',').ToList().Contains(article.Id.ToString()) ? "checked" : "") />
+                                            <label for="article@(article.Id)">@article.Text</label>
+                                        </div>
+                                    }
+                                    break;
+                                default:
+                                    <div class="col s12 l4">
+                                        <input name="Checks" id="Check1" class="checkbox-config" type="checkbox" value="true">
+                                        <label for="Check1">@L("IsActive")</label>
+                                    </div>
+                                    <div class="col s12 l4">
+                                        <input name="Checks" id="Check2" class="checkbox-config" type="checkbox" value="true" />
+                                        <label for="Check2">@L("IsActive")</label>
+                                    </div>
+                                    <div class="col s12 l4">
+                                        <input name="Checks" id="Check3" class="checkbox-config" type="checkbox" value="true" />
+                                        <label for="Check3">@L("IsActive")</label>
+                                    </div>
+                                    break;
+                            }
+
+                        </div>
+                        break;
+
+                }
+                <div class="input-field col s12 l2 ">
+                    <div class="switch">
+                        <label>
+                            @L("UnShow")
+                            <input class="isshow-config" type="checkbox" name="IsShow" @(item.IsShow ? "checked" : "")>
+                            <span class="lever"></span>
+                            @L("Show")
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}

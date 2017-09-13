@@ -1,0 +1,157 @@
+﻿@using Abp.Web.Mvc.Extensions
+@using PrepareData.Articles.Dto
+@model ArticleDto
+@{
+    ViewBag.ActiveMenu = "Articles";
+    //var models = ViewBag.Model == null ? null : (ViewBag.Model as PrepareData.Articles.Dto.ArticleDto);
+}
+@section Styles{
+
+    @Html.IncludeStyle("~/Scripts/jstree/themes/default/style.min.css")
+    @Html.IncludeStyle("~/Content/css/webuploader.mini.css")
+    @Html.IncludeStyle("~/Content/css/font-awesome.css")
+    @Html.IncludeStyle("~/Content/css/Style.css")
+}
+@section scripts{
+    @Html.IncludeScript("~/Scripts/ueditor/ueditor.config.js")
+    @Html.IncludeScript("~/Scripts/ueditor/ueditor.all.js")
+    @Html.IncludeScript("~/Scripts/webuploader/webuploader.js")
+    @Html.IncludeScript("~/Scripts/jquery.form.min.js")
+    @Html.IncludeScript("~/Scripts/jstree/jstree.min.js")
+    @Html.IncludeScript("~/Scripts/jedate/jedate.js")
+    @Html.IncludeScript("~/Views/Articles/ArticleDetail.js")
+
+    <script type="text/javascript">
+        jeDate({
+            dateCell: "#PublishTime",
+            format: "YYYY-MM-DD hh:mm:ss",
+            isinitVal: true,
+            isTime: true, //isClear:false,
+            minDate: "2014-09-19 00:00:00",
+            okfun: function (val) { alert(val) }
+        })
+    </script>
+
+}
+<div id="modalEdit" @*class="col s12"*@>
+    @*<h5 style="text-align:center;">@L("CreateArticle") </h5>
+    <div class="card-panel">*@
+        <form name="ArticlesCreateForm" @*role="form" class="form-validation"*@>
+            <div class="row">
+
+                <div class="col s12 l4">
+                    <div class="row">
+                        <input type="hidden" id="Id" name="Id" value="@(Model==null?0:Model.Id)" />
+                        <div class="input-field">
+                            <label for="Title"><span style="color:red;">*</span> @L("Title")</label>
+                            <input id="Title" name="Title" type="text" value="@(Model == null ? "" : Model.Title)">
+                        </div>
+                        @*<div class="input-field">
+                                <label for="Introduce">@L("Introduce")</label>
+                                <i class="fa fa-pencil"></i>
+                                <textarea class="materialize-textarea" id="Introduce" name="Introduce" type="text" value="@(Model==null?"":Model.Introduce)"></textarea>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col s12 l3">
+                    <label>选择导航栏目</label>
+                    <input id="NavigationMenuId" name="NavigationMenuId" type="hidden" value="@(Model==null?null:Model.NavigationMenuId)">
+                    <div class="" style="overflow-y: auto; max-height: 220px;">
+                        <div id="tree" style="min-height:220px;"></div>
+                    </div>
+                </div>
+                <div class="col s12 l4">
+                    @if (!string.IsNullOrEmpty(Model.Picture))
+                    {
+                        <div id="fileList2" class="cp_img">
+                            <img src="@Model.Picture">
+                            <div class="del"></div>
+                        </div>
+                    }
+                    <div id="fileList">
+                    </div>
+                    <div class="cp_img_jia" id="filePicker" style="display:@(string.IsNullOrEmpty(Model.Picture) ? "block" : "none")"></div>
+                    <div width="104"></div>
+                    <input type="hidden" id="Picture" name="Picture" value="@(Model==null?null:Model.Picture)" />
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col s12 l12">
+                    <label for="Content">@L("Content")</label>
+                    <!-- 加载编辑器的容器 -->
+                    <script id="Content" name="Content" type="text/plain">
+                        @MvcHtmlString.Create(Model == null ? "" : Model.Content)
+                    </script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 l4">
+                    <label for="Author">@L("Author")</label>
+                    <input id="Author" name="Author" type="text" value="@(Model==null?"":Model.Author)">
+                </div>
+                <div class="input-field col s12 l4">
+                    <label for="Source">@L("Source")</label>
+                    <input id="Source" name="Source" type="text" value="@(Model==null?"":Model.Source)">
+                </div>
+                <div class="input-field col s12 l4">
+                    <label for="keywords">@L("Keywords")</label>
+                    <input id="keywords" name="keywords" type="text" value="@(Model==null?"":Model.keywords)">
+                </div>
+                <div class="input-field col s12 l4">
+                    <label for="PublishTime">@L("PublishTime")</label>
+                    <input id="PublishTime" class="datainp" name="PublishTime" type="text" value="@(Model.PublishTime == null ? "" : Model.PublishTime.ToString("yyyy-MM-dd HH:mm:ss"))">
+                </div>
+                @*<div class="input-field col s12 l4">
+                <label class="active" for="IstoWeb">@L("IstoWeb")</label>
+                <select name="IstoWeb" class="select-dropdown" id="IstoWeb" value="@(Model==null?"":Model.IstoWeb)">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </div>*@
+                @*<div class="input-field col s12 l4">
+                <label class="active">@L("IstoNotice")</label>
+                <select name="IstoNotice" id="IstoNotice">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </div>*@
+                @*<div class="input-field col s12 l4">*@
+                <div class="col s12 m6 l4 switch">
+                    @L("IsTop")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>
+                        <span style="color:red">否</span>
+                        <input type="checkbox" id="IsTop" name="IsTop" @(Model.IsTop ? "checked" : "")>
+                        <span class="lever"></span>
+                        是
+                    </label>
+                    @*<select name="IsTop" class="select-dropdown" id="IsTop" value="@(Model==null?"":Model.IsTop)">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>*@
+                </div>
+                @*<div class="input-field col s12  l4">
+                <label for="IsCheck">@L("IsCheck")</label>
+                <select name="IsCheck" class="select-dropdown" id="IsCheck" value="@(Model==null?"":Model.IsCheck)">
+                    <option value="1">通过</option>
+                    <option value="0">不通过</option>
+                </select>
+            </div>*@
+                <div class="col s12 m6 l4 switch">
+                    @L("IsCheck") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>
+                        <span style="color:red">取消</span>
+                        <input type="checkbox" id="IsCheck" name="IsCheck" @(Model.IsCheck ? "checked" : "")>
+                        <span class="lever"></span>
+                        <span style="color:black">通过</span>
+                    </label>
+                </div>
+
+                <div class="input-field col s12">
+                    <button id="ctlBtn" type="submit" class="btn modal-action waves-effect waves-green margin-right-5"><i class="fa fa-save"></i> @L("Submit")</button>
+                </div>
+            </div>
+            <div style="margin-bottom:200px;"></div>
+        </form>
+    @*</div>*@
+</div>

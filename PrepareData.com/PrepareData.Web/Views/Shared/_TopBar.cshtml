@@ -1,0 +1,86 @@
+﻿
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">
+                @*<img src="/content/images/alliance-logo.png" style="width:50px;height:50px;" alt="alliance logo" />*@
+                <span class="logo-text"> 千睿医蟹网后台管理</span>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                @Html.Action("LanguageSelection", "Layout")
+                @Html.Action("UserMenuOrLoginLink", "Layout")
+                <li id="updatePwd"><a><i class="fa fa-gear"></i> 修改密码</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="slide-out" class="side-nav fixed">
+        <li class="card-panel" style="margin: 0;padding: 23px;background-color: #ee6e73;"></li>
+        @Html.Action("TopMenu", "Layout", new { activeMenu = ViewBag.ActiveMenu })
+    </ul>
+</div>
+<div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+    <div class="modal-content">
+        <form name="tenantCreateForm" role="form" class="form-validation">
+            <h4><span>@L("Edit")</span></h4>
+            <div class="row">
+                <div class="input-field col s12 l12">
+                    <label>@L("OldPassword")</label>
+                    <input type="password" id="OldPassword" name="OldPassword">
+                </div>
+                <div class="input-field col s12 l12">
+                    <label>@L("NewPassword1")</label>
+                    <input type="password" id="NewPassword1" name="Password">
+                </div>
+                <div class="input-field col s12 l12">
+                    <label>@L("NewPassword2")</label>
+                    <input type="password" id="NewPassword2">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn modal-action waves-effect waves-green margin-right-5 updateBtn"><i class="fa fa-save"></i> @L("Submit")</button>
+                    <button type="button" class="btn grey modal-close waves-effect waves-green margin-right-5"><i class="fa fa-reply"></i> @L("Cancel")</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/jquery-2.2.0.min.js"></script>
+<script>
+    $(function () {
+        var _userService = abp.services.app.user;
+
+        var _$modal = $("#modalEdit");
+
+        $(document).on("click", "#updatePwd", function () {
+            $("#NewPassword1").val("");
+            $("#NewPassword2").val("");
+            $("#OldPassword").val("");
+            $("#modalEdit").openModal();
+        });
+
+        $(document).on("click", ".updateBtn", function () {
+            debugger;
+            var newPassword1 = $("#NewPassword1").val();
+            var newPassword2 = $("#NewPassword2").val();
+            var oldPasssword = $("#OldPassword").val();
+            if (newPassword1 == newPassword2) {
+                var model = {
+                    OldPassword: oldPasssword,
+                    Password: newPassword2
+                };
+                _userService.changPwd(model).done(function () {
+                    abp.notify.success("修改成功！");
+                    _$modal.closeModal();
+                }).always(function () {
+                    abp.ui.clearBusy(_$modal);
+                });
+            }
+            else {
+                abp.message.info("两次输入密码不一致！");
+                $("#NewPassword1").val("");
+                $("#NewPassword2").val("");
+                return false;
+            }
+        
+        });
+    })
+</script>

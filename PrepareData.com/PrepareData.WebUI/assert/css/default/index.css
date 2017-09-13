@@ -1,0 +1,276 @@
+﻿html {
+  font-family: "微软雅黑";
+}
+::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #999;
+}
+#top_head {
+  height: 42px;
+  background: #3e5d89;
+}
+#top_head .left {
+  width: 0;
+  height: 0;
+  margin-left: -0.8rem;
+  border-top: 42px solid transparent;
+  border-left: 42px solid #fff;
+}
+#top_head a {
+  color: #fff;
+  padding: 0 0.6rem;
+}
+#top_head .btns {
+  color: #fff;
+}
+nav {
+  color: #242C6A;
+  background-color: #fff;
+  height: 67px;
+  line-height: 67px;
+}
+nav .nav-wrapper {
+  position: relative;
+  height: 100%;
+}
+nav .nav-wrapper i {
+  height: 67px;
+  line-height: 67px;
+}
+nav ul {
+  margin: 0 0 0 0px;
+}
+nav ul a {
+  color: #242C6A;
+}
+nav .input-field label {
+  width: 64px;
+}
+nav .input-field label i {
+  color: rgba(0, 0, 0, 0.7);
+  transition: color .3s;
+}
+nav .input-field label.active i {
+  color: #000;
+}
+.carousel .carousel-item img {
+  height: 100%;
+}
+.margin-right-5 {
+  margin-right: 5px;
+}
+.margin-right-10 {
+  margin-right: 10px;
+}
+.collection a.collection-item {
+  color: #242C6A;
+}
+.collection .collection-item.active {
+  background-color: #3e5d89;
+}
+.operation {
+  margin-bottom: 50px;
+}
+.crol-name {
+  float: left;
+  margin-right: 10px;
+  width: 50px;
+  height: 210px;
+  padding: 0 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #3e5d89;
+}
+.crol-name h5 {
+  line-height: 1.5;
+}
+.crol-img {
+  float: left;
+  width: 340px;
+}
+.crol-text {
+  padding: 10px;
+  width: 100%;
+  text-indent: 30px;
+  line-height: 30px;
+}
+.card-content ul {
+  margin: 0;
+  line-height: 2.0;
+}
+.card-content ul li {
+  padding: 0 10px;
+  border-bottom: 1px dotted #ddd;
+}
+.card-content ul li:hover {
+  background-color: #ddd;
+}
+.card-content ul a {
+  color: #242C6A;
+  display: inline-block;
+  position: relative;
+  padding-right: 65px;
+}
+.card-content ul .badge {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+  border-radius: 2px;
+}
+.card-home .card-title {
+  line-height: 25px !important;
+  font-size: 18px;
+  font-weight: 300;
+}
+.html-content {
+  overflow: hidden;
+}
+.p-indent {
+  text-indent: 30px;
+}
+footer.page-footer {
+  background-color: #3e5d89;
+}
+footer .friend-links a {
+  margin-right: 30px;
+}
+footer .friend-links a:hover {
+  text-decoration: underline;
+}
+.titlename {
+  position: absolute;
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  margin: 0;
+  left: 40%;
+  line-height: 67px;
+  vertical-align: middle;
+}
+/*==============================首页列表样式========================================*/
+.list-panel {
+  padding: 0;
+}
+.list-panel .list-title {
+  position: relative;
+  padding: 10px 30px;
+}
+.list-panel .list-title a {
+  color: #000;
+}
+.list-panel .list-title .divider {
+  position: absolute;
+  top: 50px;
+  width: 70%;
+  left: 250px;
+  height: 2px;
+  background-color: #a09a9a;
+}
+.list-panel .list-content {
+  padding: 0;
+}
+.list-content .list-coll {
+  margin: 0;
+  border: none;
+}
+.list-content .first-item {
+  overflow: hidden;
+  margin-top: 10px;
+  padding-top: 30px;
+  border-bottom: 1px solid #ccc;
+}
+.list-content .first-item .item-img {
+  max-width: 300px;
+}
+.list-content .list-item {
+  color: #242C6A;
+  padding: 10px 20px;
+}
+.list-content .list-item:last-child {
+  border-bottom: 1px solid #e0e0e0;
+}
+.list-content .list-item .item-text {
+  position: relative;
+  padding-right: 60px;
+}
+.list-content .item-text .badge {
+  color: #fff;
+  font-size: 0.5rem;
+  line-height: 1.5;
+  padding: 0 2px;
+  min-width: 2.2rem;
+}
+.banner {
+  width: 100%;
+  height: 450px !important;
+}
+.logo {
+  width: 184px !important;
+  height: 62px !important;
+}
+.sige-img {
+  width: 295px !important;
+  height: 210px !important;
+}
+.chip {
+  display: inline-block;
+  height: 26px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 26px;
+  padding: 0px 12px;
+  border-radius: 15px;
+  background-color: #e4e4e4;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  margin-top: 20px;
+}
+/*============================图钉===============================*/
+.top-pushpin {
+  min-width: 300px;
+}
+/*页面加载效果*/
+#data-content > div {
+  opacity: 0;
+}
+/*============================右侧尊享服务区===============================*/
+.vip-area {
+  max-width: 300px;
+}
+.vip-area ul {
+  border: 1px solid #ccc;
+}
+.vip-area ul li {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  float: left;
+  width: 75%;
+  overflow: hidden;
+}
+.collection a.collection-item:not(.active):hover {
+  background-color: #3e5d89;
+}
+.vip-area ul li a:hover {
+  color: #fff;
+}
+.vip-area .header {
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+  background-color: #3e5d89;
+  width: 100%;
+}
+.vip-area .header-title {
+  font-size: 18px;
+  text-align: center;
+  width: 25%;
+  padding-left: 8%;
+  padding-right: 8%;
+  background-color: #fff;
+}

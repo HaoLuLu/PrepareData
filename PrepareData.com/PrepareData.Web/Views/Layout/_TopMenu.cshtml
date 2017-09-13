@@ -1,0 +1,65 @@
+﻿@using Abp.Collections.Extensions
+@using PrepareData.Web.Views
+@model PrepareData.Web.Models.Layout.TopMenuViewModel
+@{
+    var calculateMenuUrl = new Func<string, string>((url) =>
+    {
+        if (string.IsNullOrEmpty(url))
+        {
+            return ApplicationPath;
+        }
+
+        if (UrlChecker.IsRooted(url))
+        {
+            return url;
+        }
+
+        return ApplicationPath + url;
+    });
+}
+<li class="no-padding">
+    <ul class="collapsible collapsible-accordion">
+        @foreach (var menuItem in Model.MainMenu.Items)
+        {
+            <li class="bold hoverable @(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
+                @if (menuItem.Items.IsNullOrEmpty())
+                {
+                    <a href="@calculateMenuUrl(menuItem.Url)" class="waves-effect waves-teal loadiframe" data-name="@menuItem.Name">
+                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
+                        {
+                            <i class="@menuItem.Icon"></i>
+                        }
+                        <span>@menuItem.DisplayName</span>
+                    </a>
+                }
+                else
+                {
+                    <a class="collapsible-header @((Model.ActiveMenuItemName == menuItem.Name || menuItem.Items.Any(o=>o.Name==Model.ActiveMenuItemName))? "active" : "") waves-effect waves-teal">
+                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
+                        {
+                            <i class="@menuItem.Icon"></i>
+                        }
+                        @menuItem.DisplayName
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            @foreach (var subMenuItem in menuItem.Items)
+                            {
+                                <li class="hoverable @(Model.ActiveMenuItemName == subMenuItem.Name ? "active" : "")">
+                                    <a href="@calculateMenuUrl(subMenuItem.Url)" class="waves-effect waves-teal loadiframe"  data-name="@subMenuItem.Name">
+                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
+                                        {
+                                            <i class="@subMenuItem.Icon"></i>
+                                        }
+                                        <span>@subMenuItem.DisplayName</span> 
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </li>
+        }
+
+    </ul>
+</li>

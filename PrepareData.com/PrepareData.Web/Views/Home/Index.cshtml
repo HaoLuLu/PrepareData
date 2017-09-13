@@ -1,0 +1,25 @@
+﻿@using Abp.Web.Mvc.Extensions
+@{
+    ViewBag.ActiveMenu = "Home"; //The menu item will be active for this page.
+    Layout = "~/Views/Shared/_Layout_Home.cshtml";
+}
+@section scripts
+{
+    @Html.IncludeScript("~/Views/Home/Index.js")
+}
+<div class="row">
+    <ul id="FrameTabs" class="tabs">
+        <li class="tab col s3 z-depth-1">
+            <a class="active" href="#iFrameTabHome">主页</a>
+        </li>
+    </ul>
+    <div id="iFrameTabHome" class="col s12 grey lighten-4">
+        <div class="card-panel">
+            <p></p>
+            <div class="valign-wrapper">
+                <h1 class="valign">@L("WellcomeMessage")</h1>
+            </div>
+        </div>
+       
+    </div> 
+    </div>

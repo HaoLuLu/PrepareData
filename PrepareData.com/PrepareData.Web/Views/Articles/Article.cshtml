@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Web.cshtml";
+}
+@model PrepareData.Articles.Dto.ArticleDto
+@section styles{
+
+}
+@section scripts{
+    <script>
+        $(function () {
+            $('.carousel.carousel-slider').carousel({ full_width: true });
+            load_Menu();
+            $(".html-content img").addClass("responsive-img materialboxed");
+        });
+    </script>
+}
+
+<div class="col s12 l12">
+    <div class="card hoverable">
+        <div class="card-action">
+            <div class="card-title center">@Model.Title</div>
+        </div>
+        <div class="center">
+            <div class="chip">更新时间：@(Model.CreationTime.ToShortDateString())</div>
+            <div class="chip">来源：@Model.Source</div>
+            <div class="chip">关键词：@Model.keywords</div>
+            <div class="chip">作者：@Model.Author</div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-content html-content">
+            <p class="p-indent">
+                @MvcHtmlString.Create(Model.Content)
+            </p>
+        </div>
+    </div>
+</div>

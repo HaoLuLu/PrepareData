@@ -1,0 +1,137 @@
+﻿@using Abp.MultiTenancy
+@using Abp.Web.Mvc.Extensions
+@using PrepareData.MultiTenancy
+@{
+    ViewBag.ActiveMenu = "Tenants"; //The menu item will be active for this page.
+}
+@section styles
+{
+    @Html.IncludeStyle("~/Content/css/jquery.dataTables.min.css")
+    @Html.IncludeStyle("~/Content/css/webuploader.mini.css")
+    @Html.IncludeStyle("~/Content/css/font-awesome.css")
+    @Html.IncludeStyle("~/Content/css/Style.css")
+}
+@section scripts
+{
+    @Html.IncludeScript("~/Scripts/webuploader/webuploader.js")
+    @Html.IncludeScript("~/Scripts/DataTables/jquery.dataTables.min.js")
+    @Html.IncludeScript("~/Views/Tenants/Index.js")
+}
+<div class="card-panel">
+    <p></p>
+    <div class="row">
+        <div class="col s12">
+            <form class="col s12 query_form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="Name" type="text" class="validate">
+                        <label for="icon_prefix3" class="">@L("Name")</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button class="btn cyan waves-effect waves-light left query_btn" type="button" name="action">
+                            <i class="mdi-action-search"></i> @L("Query")
+                        </button>
+                        <a id="add_doc" class="btn waves-effect waves-light right edit_btn" href="#modalEdit">
+                            <i class="fa fa-plus"></i> @L("Create")
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <table id="datatable" class="responsive-table centered striped highlight">
+                <thead>
+                    <tr>
+                        <th>@L("OrderBy")</th>
+                        <th>@L("TenancyName")</th>
+                        <th>@L("Name")</th>
+                        <th>@L("Contact")</th>
+                        <th>@L("ContactTel")</th>
+                        <th>@L("E_Mail")</th>
+                        <th>@L("Address")</th>
+                        <th>@L("AuthorizedEndTime")</th>
+                        <th>@L("IsHot")</th>
+                        <th>@L("TenantGroups")</th>
+                        <th>@L("IsActive")</th>
+                        <th>@L("Operation")</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+    <div class="modal-content">
+        <form name="tenantCreateForm" role="form" class="form-validation">
+            <h4><span>@L("Edit")</span></h4>
+            <div class="row">
+                <input type="hidden" id="Id" name="Id" value="0" />
+                <div class="input-field col s6 l6">
+                    <label class="active">@L("TenantGroups")</label>
+                    <select id="TenantGroup" name="TenantGroupId"></select>
+                </div>
+                <div class="input-field col s12 l6">
+                    <label>@L("OrderBy")</label>
+                    <input type="number" id="OrderBy" name="OrderBy" placeholder="为空或为0时不在汇总页显示！！" >
+                </div>
+                <div class="input-field col s12 l6">
+                    <label>@L("TenancyName")</label>
+                    <input type="text" id="TenancyName" name="TenancyName" placeholder="@L("TenancyName")" required maxlength="@Tenant.MaxTenancyNameLength" minlength="2">
+                </div>
+                <div class="input-field col s12 l6">
+                    <label>@L("Name")</label>
+                    <input type="text" id="Name" name="Name" placeholder="@L("Name")" required maxlength="@Tenant.MaxNameLength">
+                </div>
+                <div class="input-field col s12 l6">
+                    <input type="text" id="Contact" name="Contact" placeholder="@L("Contact")" required maxlength="@Tenant.MaxNameLength">
+                </div>
+                <div class="input-field col s12 l6">
+                    <input type="text" id="ContactTel" name="ContactTel" placeholder="@L("ContactTel")" required maxlength="@Tenant.MaxNameLength">
+                </div>
+                <div class="input-field col s12 l6">
+                    <input type="email" id="E_Mail" name="E_Mail" placeholder="@L("Tenant")@L("E_Mail")" required maxlength="@Tenant.MaxNameLength">
+                </div>
+                <div class="input-field col s12 l6">
+                    <input type="text" id="Address" name="Address" placeholder="@L("Address")" required maxlength="@Tenant.MaxNameLength">
+                </div>
+                <div class="input-field col s12 l6">
+                    <input id="AuthorizedEndTime" name="AuthorizedEndTime" placeholder="@L("AuthorizedEndTime")" class="datepicker" type="date" data-error=".errorTxt3"><div class="errorTxt3"></div>
+                </div>
+                @*<div class="input-field col s12 l6">
+                        <input type="text" id="ConnectionString" name="ConnectionString" placeholder="@L("DatabaseConnectionString") (@L("Optional"))" maxlength="@AbpTenantBase.MaxConnectionStringLength">
+                    </div>*@
+                <div class="input-field col s12 l6">
+                    <input type="email" id="AdminEmailAddress" name="AdminEmailAddress" placeholder="@L("AdminEmailAddress")" required maxlength="@PrepareData.Users.User.MaxEmailAddressLength">
+                </div>
+                <div class="col s12 l6">
+                    <label>汇总页logo</label>
+                    <div id="fileList"></div>
+                    <div class="cp_img_jia" id="filePicker"></div>
+                    <input type="hidden" id="Picture" name="Picture" value="" />
+                </div>
+                <div class="col s6 l3 switch">
+                    <label>
+                        禁用
+                        <input type="checkbox" id="IsHot" name="IsHot" checked>
+                        <span class="lever"></span>
+                        汇总页显示
+                    </label>
+                </div>
+                <div class="col s6 l3 switch">
+                    <label>
+                        停用
+                        <input type="checkbox" id="IsActive" name="IsActive" checked>
+                        <span class="lever"></span>
+                        启用
+                    </label>
+                </div>
+                <div class="col s12 l12">
+                    <p style="padding-top:15px;">@L("DefaultPasswordIs", PrepareData.Users.User.DefaultPassword)</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn modal-action waves-effect waves-green margin-right-5"><i class="fa fa-save"></i> @L("Submit")</button>
+                    <button type="button" class="btn grey modal-close waves-effect waves-green margin-right-5"><i class="fa fa-reply"></i> @L("Cancel")</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

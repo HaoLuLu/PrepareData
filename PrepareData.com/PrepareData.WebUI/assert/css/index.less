@@ -1,0 +1,109 @@
+﻿@theme-background: #f6f6f6;
+@theme-color: #113581;
+
+html {
+    font-family: "微软雅黑";
+}
+
+body {
+    background-color:@theme-background;
+}
+
+.container{
+    width:1200px;
+}
+
+.tenant-group-name {
+    height: 35px;
+    font-size: 28px;
+    width: 100%;
+    margin-top: 30px;
+    color:@theme-color;
+}
+
+.tenantGroup {
+}
+
+    .tenantGroup ul li {
+        width: 138px;
+        height: 110px;
+        float: left;
+        margin: 10px 10px 10px 10px;
+        cursor: pointer;
+    }
+
+        .tenantGroup ul li a {
+            text-align: left;
+        }
+
+            .tenantGroup ul li a img {
+                width: 138px;
+                height: 90px;
+            }
+
+            .tenantGroup ul li a span {
+                display: block;
+                height: 20px;
+                font-size: 14px;
+                 font-weight:600;
+                background-color: #c9c9ca;
+                color: @theme-color;
+            }
+
+.progress {
+    float: left;
+    position: relative;
+    height: 15px;
+    display: block;
+    width: 47%;
+    background-color: @theme-color;
+    border-radius: 2px;
+    margin: 0.5rem 0 1rem 0;
+    overflow: hidden;
+}
+
+    .progress .determinate {
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        left: 0;
+        bottom: 0;
+        background-color: @theme-color;
+        transition: width .3s linear;
+    }
+
+/*箭头向左*/
+.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 30px solid @theme-background;
+}
+
+/*箭头向右*/
+.arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid @theme-background;
+}
+/*更多按钮*/
+.more {
+    margin-top: 25px;
+}
+
+    .more a {
+        float: left;
+        font-size: 18px;
+        background-color:#ee1b24;
+    }
+    .more a:hover {
+        background-color: #f8333c;
+    }
+
+/*信息*/
+.collapsible{
+    margin-top: 36px;
+    }

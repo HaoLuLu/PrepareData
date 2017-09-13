@@ -1,0 +1,103 @@
+﻿@using Abp.MultiTenancy
+@using Abp.Web.Mvc.Extensions
+@using PrepareData.TenantGroups
+@{
+    ViewBag.ActiveMenu = "NavigationMenus"; //The menu item will be active for this page.
+}
+@section styles
+{
+    @Html.IncludeStyle("~/Scripts/jstree/themes/default/style.min.css")
+    @Html.IncludeStyle("~/Content/css/jquery.dataTables.min.css")
+}
+@section scripts
+{
+    @Html.IncludeScript("~/Scripts/jstree/jstree.min.js")
+    @Html.IncludeScript("~/Scripts/DataTables/jquery.dataTables.min.js")
+    @Html.IncludeScript("~/Views/NavigationMenus/Index.js")
+}
+<div class="card-panel">
+    <p></p>
+    <div class="row">
+        <div class="col s12 l3">
+            <input id="levelId" type="hidden" value="-1" />
+            <div id="card-alert" class="card light-blue">
+                <div class="card-content white-text">
+                    <div id="tree" ></div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 l9">
+            <form class="col s12 query_form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="parentId" id="parentId" type="hidden" value="-1" class="validate">
+                        <input name="Name" type="text" class="validate">
+                        <label for="icon_prefix3" class="">@L("Name")</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button class="btn cyan waves-effect waves-light left query_btn" type="button" name="action">
+                            <i class="mdi-action-search"></i> @L("Query")
+                        </button>
+                        <a id="add_doc" class="btn waves-effect waves-light right edit_btn" href="#modalEdit">
+                            <i class="fa fa-plus"></i> @L("Create")
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <table id="datatable" class="responsive-table centered striped highlight">
+                <thead>
+                    <tr>
+                        <th>@L("OrderBy")</th>
+                        <th>@L("Name")</th>
+                        <th>@L("ParentName")</th>
+                        <th>@L("Type")</th>
+                        <th>@L("IsActive")</th>
+                        <th>@L("Operation")</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+    <div class="modal-content">
+        <form name="tenantCreateForm" role="form" class="form-validation">
+            <h4><span>@L("Edit")</span></h4>
+            <div class="row">
+                <input type="hidden" id="Id" name="Id" value="0" />
+                <div class="input-field col s12 l4">
+                    <input type="hidden" id="parentIdc" name="parentId" required>
+                    <input type="text" id="parentName" name="parentName" placeholder="@L("Parent")" required readonly>
+                </div>
+                <div class="input-field col s12 l3">
+                    <input type="text" id="OrderBy" name="OrderBy" placeholder="@L("OrderBy")" required>
+                </div>
+                <div class="input-field col s12 l5">
+                    <input type="text" id="Name" name="Name" placeholder="@L("Name")" required>
+                </div>
+                <div class="col s12 l6 switch">
+                    <label>
+                        单页
+                        <input type="checkbox" id="Type" name="Type">
+                        <span class="lever"></span>
+                        文章
+                    </label>
+                </div>
+                <div class="col s12 l6 switch">
+                    <label>
+                        停用
+                        <input type="checkbox" id="IsActive" name="IsActive" checked="checked">
+                        <span class="lever"></span>
+                        启用
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn modal-action waves-effect waves-green margin-right-5"><i class="fa fa-save"></i> @L("Submit")</button>
+                    <button type="button" class="btn grey modal-close waves-effect waves-green margin-right-5"><i class="fa fa-reply"></i> @L("Cancel")</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "assert/css/index.css",
+    "inputFile": "assert/css/index.less"
+  },
+  {
+    "outputFile": "assert/css/default/index.css",
+    "inputFile": "assert/css/default/index.less"
+  }
+]

@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Web.cshtml";
+}
+@model List<PrepareData.Articles.Dto.ArticleListDto>
+@section styles{
+
+}
+@section scripts{
+    <script>
+        $(function () {
+            $('.carousel.carousel-slider').carousel({ full_width: true });
+            load_Menu(@ViewBag.Mid);
+        });
+    </script>
+}
+
+<div class="col s12 l12">
+    <div class="card">
+        <div class="card-action">
+            <span class="card-title">@ViewBag.Title</span>
+        </div>
+        <div class="divider"></div>
+        <div class="card-content">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <a class="" href="#!">@item.Title @(item.IsTop=="置顶"?"<span class=\"badge red\">置顶</span>":"")</a>
+                        <span class="grey-text text-lighten-1 right">@(item.CreationTime.ToShortDateString())</span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

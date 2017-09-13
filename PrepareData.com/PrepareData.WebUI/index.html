@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>医蟹网|千睿医蟹联盟</title>
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+
+    <meta name="keywords" content="医蟹网 医械" />
+
+    <link href="assert/plugs/materialize/css/materialize.min.css" rel="stylesheet" />
+    <link href="assert/plugs/font-awesome/font-awesome.min.css" rel="stylesheet" />
+    <link href="assert/css/index.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="assert/plugs/others/html5shiv.js"></script>
+        <script src="assert/plugs/others/respond.min.js"></script>
+    <![endif]-->
+    <script src="assert/scripts/ie10fix.js"></script>
+    <script src="assert/scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <nav>
+                    <form class="">
+                        <div class="input-field">
+                            <input id="search" type="search" placeholder="请输入内容" required>
+                            <label for="search" class="active"><i class="fa fa-search"></i></label>
+                        </div>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <h5 class="center tenant-group-name">汇总展示效果图</h5>
+                <div class="col s12 l8">
+                    <div class="tenantGroup">
+                        <ul class="center hide-on-med-and-down">
+                            
+                            <li><div class="card"><div class="card-image"><a href="#"><img src="assert/img/demo_logo/jqqd.jpg"><span class="truncate">敬请期待</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="./layout/template3/demo.html"><img src="assert/img/demo_logo/zs_yljg.jpg"><span class="truncate">点击进入</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="./layout/template4/demo.html"><img src="assert/img/demo_logo/zs_wls.jpg"><span class="truncate">点击进入</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="./layout/template5/demo.html"><img src="assert/img/demo_logo/zs_yljg.jpg"><span class="truncate">点击进入</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="./layout/template6/demo.html"><img src="assert/img/demo_logo/zs_jxs.jpg"><span class="truncate">点击进入</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="./layout/template7/demo.html"><img src="assert/img/demo_logo/zs_jxs.jpg"><span class="truncate">点击进入</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="#"><img src="assert/img/demo_logo/jqqd.jpg"><span class="truncate">敬请期待</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="#"><img src="assert/img/demo_logo/jqqd.jpg"><span class="truncate">敬请期待</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="#"><img src="assert/img/demo_logo/jqqd.jpg"><span class="truncate">敬请期待</span></a></div></div></li>
+                            <li><div class="card"><div class="card-image"><a href="./layout/template1/index.html?tenid=2"><img src="assert/img/demo_logo/zs_yljg.jpg"><span class="truncate">点击进入</span></a></div></div></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col s12 l4">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header"><i class="fa fa-commenting-o small"></i>《医疗器械监督管理条例》</div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="fa fa-commenting-o small"></i>CT机的真面目原来是这样！</div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="fa fa-commenting-o small"></i>招标投标中各流程时间期限的规定</div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row more">
+                <div class="progress">
+                    <div class="determinate arrow-left"></div>
+                </div>
+                <a class="btn-floating btn-large waves-effect waves-light">更多</a>
+                <div class="progress ">
+                    <div class="determinate arrow-right"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="data-tenantGroups" class="row">
+               
+            </div>
+        </div>
+    </div>
+    <script src="assert/plugs/json2/json2.min.js"></script>
+    <script src="assert/plugs/jquery/jquery.min.js"></script>
+    <script src="assert/plugs/materialize/js/materialize.min.js"></script>
+    <script src="assert/scripts/abp/abp.js"></script>
+    <script src="assert/scripts/abp/libs/abp.jquery.js"></script>
+    <script src="assert/scripts/global.js"></script>
+    <script>
+
+        $(function () {
+            Global.load_TenantGroups(1);
+        });
+
+    </script>
+</body>
+</html>

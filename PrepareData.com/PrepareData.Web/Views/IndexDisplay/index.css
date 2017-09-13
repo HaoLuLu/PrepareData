@@ -1,0 +1,133 @@
+﻿html {
+  font-family: "微软雅黑";
+}
+#top_head {
+  height: 42px;
+  background: #3e5d89;
+}
+#top_head .left {
+  width: 0;
+  height: 0;
+  margin-left: -0.8rem;
+  border-top: 42px solid transparent;
+  border-left: 42px solid #fff;
+}
+#top_head a {
+  color: #fff;
+  padding: 0 0.6rem;
+}
+#top_head .btns {
+  color: #fff;
+}
+nav {
+  color: #242C6A;
+  background-color: #fff;
+  height: 67px;
+  line-height: 67px;
+}
+nav .nav-wrapper {
+  position: relative;
+  height: 100%;
+}
+nav .nav-wrapper i {
+  height: 67px;
+  line-height: 67px;
+}
+nav ul {
+  margin: 0 0 0 200px;
+}
+nav ul a {
+  color: #242C6A;
+}
+nav .input-field label {
+  width: 64px;
+}
+nav .input-field label i {
+  color: rgba(0, 0, 0, 0.7);
+  transition: color .3s;
+}
+nav .input-field label.active i {
+  color: #000;
+}
+.carousel .carousel-item img {
+  height: 100%;
+}
+.margin-right-5 {
+  margin-right: 5px;
+}
+.margin-right-10 {
+  margin-right: 10px;
+}
+.collection a.collection-item {
+  color: #242C6A;
+}
+.collection .collection-item.active {
+  background-color: #3e5d89;
+}
+.operation {
+  margin-bottom: 50px;
+}
+.collection.operation .collection-item.active {
+  background-color: #EC4690;
+}
+.crol-name {
+  float: left;
+  margin-right: 10px;
+  width: 50px;
+  height: 238px;
+  padding: 0 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #3e5d89;
+}
+.crol-name h5 {
+  line-height: 1.5;
+}
+.crol-img {
+  float: left;
+  width: 340px;
+}
+.crol-text {
+  padding: 10px;
+  width: 100%;
+  text-indent: 30px;
+  line-height: 30px;
+}
+.card-content ul {
+  margin: 0;
+  line-height: 2.0;
+}
+.card-content ul li {
+  padding: 0 10px;
+  border-bottom: 1px dotted #ddd;
+}
+.card-content ul li:hover {
+  background-color: #ddd;
+}
+.card-content ul a {
+  color: #242C6A;
+  display: inline-block;
+  position: relative;
+  padding-right: 65px;
+}
+.card-content ul .badge {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+  border-radius: 2px;
+}
+.html-content {
+  overflow: hidden;
+}
+.p-indent {
+  text-indent: 30px;
+}
+footer.page-footer {
+  background-color: #3e5d89;
+}
+footer .friend-links a {
+  margin-right: 30px;
+}
+footer .friend-links a:hover {
+  text-decoration: underline;
+}

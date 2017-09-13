@@ -1,0 +1,69 @@
+﻿@using Abp.Web.Mvc.Extensions
+@model PrepareData.Web.Models.Account.RegisterViewModel
+@section Styles
+{
+    @Html.IncludeStyle("~/Content/css/login.css")
+}
+@section Scripts{
+    @Html.IncludeScript("~/Views/Account/Register.js")
+}
+<div class="container">
+    <div id="LoginArea" class="row">
+        <div class="col s12">
+            <div class="card z-depth-3">
+                <div class="card-title">
+                    <div class="col s12">
+                        <h4 class="">@L("Register")</h4>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <form class="register-form" action="@(Url.Action("Register", "Account"))" method="POST">
+                            @Html.AntiForgeryToken()
+                            @if (@ViewBag.ErrorMessage != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <i class="fa fa-warning"></i> @ViewBag.ErrorMessage
+                                </div>
+                            }
+
+                            @if (ViewBag.IsMultiTenancyEnabled)
+                            {
+                                <div class="input-field col s12">
+                                    <input type="text" class="form-control" name="TenancyName" placeholder="@L("TenancyName")" value="@Model.TenancyName" required maxlength="@PrepareData.MultiTenancy.Tenant.MaxTenancyNameLength">
+                                </div>
+                            }
+
+                            <input type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
+
+                            <div class="input-field col s12">
+                                <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="@L("Name")" required maxlength="@PrepareData.Users.User.MaxNameLength">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" class="form-control" name="Surname" value="@Model.Surname" placeholder="@L("Surname")" required maxlength="@PrepareData.Users.User.MaxSurnameLength">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="email" class="form-control" name="EmailAddress" value="@Model.EmailAddress" placeholder="@L("EmailAddress")" required maxlength="@PrepareData.Users.User.MaxEmailAddressLength">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" class="form-control" name="UserName" value="@Model.UserName" placeholder="@L("UserName")" required maxlength="@PrepareData.Users.User.MaxUserNameLength">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@PrepareData.Users.User.MaxPlainPasswordLength">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <button type="submit" id="RegisterButton" class="btn btn-primary"><i class="fa fa-sign-in"></i> @L("Register")</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

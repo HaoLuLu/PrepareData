@@ -1,0 +1,89 @@
+﻿@using Abp.MultiTenancy
+@using Abp.Web.Mvc.Extensions
+@using PrepareData.MultiTenancy
+@{
+    ViewBag.ActiveMenu = "FriendLinks"; //The menu item will be active for this page.
+}
+@section styles
+{
+    @Html.IncludeStyle("~/Content/css/jquery.dataTables.min.css")
+  @Html.IncludeStyle("~/Content/css/webuploader.mini.css")
+@Html.IncludeStyle("~/Content/css/font-awesome.css")
+@Html.IncludeStyle("~/Content/css/Style.css")
+}
+@section scripts
+{
+    @Html.IncludeScript("~/Scripts/webuploader/webuploader.js")
+    @Html.IncludeScript("~/Scripts/jquery.form.min.js")
+    @Html.IncludeScript("~/Scripts/DataTables/jquery.dataTables.min.js")
+    @Html.IncludeScript("~/Views/FriendLinks/Index.js")
+
+}
+<div class="card-panel">
+    <p></p>
+    <div class="row">
+        <div class="col s12">
+            <form class="col s12 query_form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="Name" type="text" class="validate">
+                        <input type="hidden" name="Type" value="0" />
+                        <label for="icon_prefix3" class="">@L("FriendLinkName")</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button class="btn cyan waves-effect waves-light left query_btn" type="button" name="action">
+                            <i class="mdi-action-search"></i> @L("Query")
+                        </button>
+                        <a id="add_doc" class="btn waves-effect waves-light right edit_btn" href="#modalEdit">
+                            <i class="fa fa-plus"></i> @L("Create")
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <table id="datatable" class="responsive-table centered striped highlight">
+                <thead>
+                    <tr>
+                        <th>@L("OrderBy")</th>
+                        <th>@L("Name")</th>
+                        <th>@L("Url")</th>
+                        <th>@L("Operation")</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+    <div class="modal-content">
+        <form name="tenantCreateForm" role="form" class="form-validation">
+            <h4><span>@L("Edit")</span></h4>
+            <div class="row">
+                <input type="hidden" id="Id" name="Id" value="0" />
+                <input type="hidden" id="Type" name="Type" value="0" />
+                <div class="input-field col s12 l3">
+                    <input type="text" id="OrderBy" name="OrderBy" placeholder="@L("OrderBy")" required>
+                </div>
+                <div class="input-field col s12 l3">
+                    <input type="text" id="Name" name="Name" placeholder="@L("FriendLinkName")" required>
+                </div>
+                <div class="input-field col s12 l6">
+                    <input type="text" id="Url" name="Url" placeholder="@L("Url")" required>
+                </div>
+                <div class="col s12 l6">
+                    <div id="fileList">
+                    </div>
+                    <div class="cp_img_jia" id="filePicker"></div>
+                    <div width="104"></div>
+                    <input type="hidden" id="Picture" name="Picture" value="" />
+                </div>
+            
+                <div class="modal-footer">
+                    <button id="CtlBtn"  type="submit" class="btn modal-action waves-effect waves-green margin-right-5"><i class="fa fa-save"></i> @L("Submit")</button>
+                    <button type="button" class="btn grey modal-close waves-effect waves-green margin-right-5"><i class="fa fa-reply"></i> @L("Cancel")</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="zh-CN">
+  <texts>
+    <text name="HomePage" value="主页" />
+    <text name="About" value="关于我们" />
+    <text name="WellcomeMessage" value="欢迎使用登录千睿联盟后台管理!" />
+
+    <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
+    <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
+
+    <text name="InvalidUserNameOrPassword" value="用户名或密码无效" />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="联盟机构 {0}不存在" />
+    <text name="TenantIsNotActive" value="该联盟机构 {0} 未激活." />
+    <text name="UserIsNotActiveAndCanNotLogin" value="用户 {0} 未激活，不能登录." />
+    <text name="PleaseEnterLoginInformation" value="请输入登录信息" />
+    <text name="UserNameOrEmail" value="用户名或邮箱地址" />
+    <text name="Password" value="密码" />
+    <text name="RememberMe" value="记住我" /> 
+    <text name="LogIn" value="登录" />
+    <text name="Register" value="注册" />
+    <text name="DefaultPasswordIs" value="默认密码是：{0}" />
+    <text name="LoginFailed" value="登录失败!" />
+    <text name="AuthManage" value="系统管理" />
+    <text name="Tenants" value="联盟管理" />
+    <text name="Users" value="用户管理" />
+    <text name="Name" value="名称" />
+    <text name="IsActive" value="是否可用" />
+    <text name="TenancyName" value="编号" />
+    <text name="OldPassword" value="旧密码" />
+    <text name="NewPassword1" value="新密码" />
+    <text name="NewPassword2" value="请再次输入新密码" />
+    
+    <text name="Delete" value="删除" />
+    <text name="Create" value="新增" />
+    <text name="Edit" value="编辑" />
+    <text name="Query" value="查询" />
+    <text name="Save" value="保存" />
+    <text name="Cancel" value="取消" />
+    <text name="Operation" value="操作"/>
+    <text name="Submit" value="提交"/>
+    <text name="Required" value="该字段为必填项" />
+    <text name="Show" value="显示" />
+    <text name="UnShow" value="不显示" />
+
+    <!--友情链接-->
+    <text name="FriendLinkName" value="链接名称"/>
+    <text name="FriendLink" value="友情链接"/>
+    <text name="Url" value="链接地址"/>
+
+    <!--轮播图-->
+    <text name="Sliders" value="轮播图" />
+    <!--首页设置-->
+    <text name="ChildSysConfigs" value="首页设置" />
+    <!--单页-->
+    <text name="Title" value="标题"/>
+    <text name="Introduce" value="简介"/>
+    <text name="Content" value="内容"/>
+    <text name="Picture" value="图片"/>
+
+    <!--联盟组管理（租户组）-->
+    <text name="EnglishName" value="英文名称"/>
+    <text name="OrderBy" value="排序"/>
+    <text name="TenantGroups" value="联盟机构组"/>
+    <text name="Tenant" value="联盟机构"/>
+    <text name="Contact" value="联系人"/>
+    <text name="ContactTel" value="联系电话"/>
+    <text name="E_Mail" value="邮箱"/>
+    <text name="Address" value="地址"/>
+    <text name="AuthorizedEndTime" value="授权截至时间"/>
+    <text name="IsHot" value="是否推荐"/>
+    <text name="Surname" value="姓"/>
+    <text name="FullName" value="全名"/>
+    <text name="UserName" value="用户名"/>
+    <text name="EmailAddress" value="邮箱地址"/>
+    <text name="LastLoginTime" value="最后登陆时间"/>
+    <text name="CreationTime" value="创建时间"/>
+    <text name="AdminEmailAddress" value="管理员邮箱"/>
+    <!--文章-->
+    <text name="CreateArticle" value="新建文章"/>
+    <text name="Author" value="作者"/>
+    <text name="Source" value="来源"/>
+    <text name="Keywords" value="关键字"/>
+    <text name="IstoWeb" value="推送到主站"/>
+    <text name="IsTop" value="是否置顶"/>
+    <text name="Article" value="文章"/>
+    <text name="IsCheck" value="是否发表"/>
+    <text name="SinglePage" value="单页"/>
+    <text name="PublishTime" value="发布时间"/>
+    <text name="IsPublish" value="发布"/>
+    <text name="NavigationMenu" value="栏目"/>
+
+    <!--栏目-->
+    <text name="NavigationMenus" value="栏目管理"/>
+    <text name="Type" value="类型"/>
+    <text name="ParentName" value="上级目录"/>
+  </texts>
+</localizationDictionary>
